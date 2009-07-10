@@ -1,0 +1,21 @@
+Inside this folder you find the files that are part of the Ada Works framework.
+
+author: Marcelo Coraça de Freitas
+
+
+awconfig	=> configuration files handling library.
+awent		=> persistence/odb abstraction framework.
+awlib		=> general library. Mostly String handling and SO Specific tasks
+awlog		=> logging capatbilities for Ada
+awplug		=> plugin loading/unloading
+
+apq		=> database bindings (a database neutral package)
+apq-mysql	=> MySQL support for APQ
+apq-postgresql	=> PostgreSQL support for APQ
+apq-freetds	=> Generic FreeTDS support for APQ
+apq-sybase	=> Sybase support for APQ (FreeTDS powered)
+apq-mssql	=> Microsoft SQL Server support for APQ (FreeTDS powered)
+
+
+extra		=> some random files we have nowhere else to put
+

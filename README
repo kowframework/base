@@ -1,0 +1,121 @@
+		Adaworks
+	
+	KOW :: Consulting and Open Source
+
+============
+= Contents =
+============
+
+1. Introduction
+2. Dependencies
+3. Code structure
+4. Building
+
+
+
+===================
+= 1. Introduction =
+===================
+
+This is the implementation of Adaworks, a framework for building business applications with 
+the Ada2005 programming language.
+
+
+
+===================
+= 2. Dependencies =
+===================
+
+Install MSYS and MinGW (http://www.mingw.org). Then, make sure you have a recent version of GNAT (https://libre.adacore.com/dynamic/download_page)
+installed on c:/GNAT. Then, add 
+c:/GNAT   /gnat
+
+to your fstab on msys/etc and its (GNAT) bin path tho the $PATH environment variable like this:
+
+$ export PATH=gnat/2008/bin:$PATH
+
+This will get make to call the gcc version that comes with GPS, instead of using the older version that comes with MingW.
+This one is required for us to be able to compile the source code written in Ada 2005.
+Moreover, you will need all the paths containing the project files (.gpr) in the
+environment variable ADA_PROJECT_PATH. To set this, still inside adaworks_trunk, run 
+
+$ source export_path.sh
+
+
+To build AWConfig library you will need xmlada installed. Download xmlada (https://libre.adacore.com/dynamic/download_page),
+unzip the file at c:/xmlada-build and create c:/xmlada. Include these lines in the file /etc/fstab of your MingW:  
+
+c:/xmlada-build  /xmlada-build
+c:/xmlada  /xmlada
+c:/adaworks  /adaworks
+
+Then, do:
+
+cd /xmlada-build
+./configure --prefix=/xmlada
+make
+make install
+
+to get xmlada built and installed.
+
+
+
+=====================
+= 3. Code structure =
+=====================
+
+Adaworks is composed by these libraries (they are ready to use in Linux - even though they shouldn't be considered 
+stable yet - and should run fine in Windows (cygwin)):
+
+    * AWLib
+          o for now we have:
+                + string utilities.
+                + some file system functionalities.
+                + symbols and dll handling.
+                + locales.
+                + calendar operations (formatting supporting locales). 
+    * AWConfig
+          o we support both XML and plain text files
+          o using String types. 
+    * AWLog
+          o highly configurable and powerful logging facilities.
+          o support multiple output formats (called log writers).
+          o regular expressions support in log pattern. 
+    * AWPlug
+          o system-independent plugin facilities.
+          o can handle library prefix and suffix depending on the system (looks for lib[plugin_name].so in linux and [plugin_name].dll in windows) 
+    * APQ
+          o the already known database bindings, now supporting a more flexible build system (based on gnat's GPR files)
+          o the core have been cleared and split into sub projects for each database product:
+                + APQ-MySQL?
+                + APQ-PostgreSQL?
+                + APQ-Sybase?
+                      # this should be changed anytime soon (delayed, but before the 3.0-alpha2 release)
+                      # instead of apq-sybase deriving from apq we'll have apq-ct_lib, from which we'll implement apq-mssql and apq-sybase 
+    * AWDB
+          o programatical tools for building Database Neutral SQL Queries.
+          o still in early stages, but will easy the development of valid and efficient queries for different database products 
+
+   1. AWSec
+          * modular security facilities handling both authentication and authorization (in independent way).
+          * accounting is also implemented 
+
+   2. AWEnt
+          * entity management for Ada (based on APQ).
+          * should be started simultaneously (maybe with a short delay) with AWSec. 
+   3. AWView
+          * a framework for helping building complex web sites based with AWS. 
+   4. AWDist
+          * a distributed structure for business applications with a simple but yet efficient implementation.
+          * this should include extension for both AWSec and AWEnt 
+
+For more details please refer to Project Overview and Project Releases. 
+
+
+
+===============
+= 4. Building =
+===============
+
+Having GPS installed, the environment variables set (PATH and ADA_PROJECT_PATH) and xmlada installed (for AWconfig), you
+can get into any of the modules and "do make".

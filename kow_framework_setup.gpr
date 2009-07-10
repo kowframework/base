@@ -1,0 +1,21 @@
+
+project AdaWorks_Setup is
+
+	type Supported_OS is ("Windows_NT", "GNU/Linux");
+	target: Supported_OS := external("OS", "GNU/Linux");
+
+
+
+	for Languages use ( "c" );
+	for Externally_Built use "true";
+
+	case target is
+		when "Windows_NT" =>
+			for Library_Kind use "static";
+
+		when "GNU/Linux" =>
+			for Library_Kind use "dynamic";
+	end case;
+
+end AdaWorks_Setup;
+
