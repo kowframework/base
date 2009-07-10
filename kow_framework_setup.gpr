@@ -1,5 +1,5 @@
 
-project AdaWorks_Setup is
+project KOW_Framework_Setup is
 
 	type Supported_OS is ("Windows_NT", "GNU/Linux");
 	target: Supported_OS := external("OS", "GNU/Linux");
@@ -17,5 +17,5 @@ project AdaWorks_Setup is
 			for Library_Kind use "dynamic";
 	end case;
 
-end AdaWorks_Setup;
+end KOW_Framework_Setup;
 
