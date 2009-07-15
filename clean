@@ -1,0 +1,12 @@
+#!/bin/sh
+
+
+
+OPWD=$PWD
+
+for i in `find -maxdepth 1 -type d`
+do
+	cd $OPWD/$i 
+	make clean
+done
+
