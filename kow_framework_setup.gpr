@@ -1,8 +1,12 @@
 
 project KOW_Framework_Setup is
 
-	type Supported_OS is ("Windows_NT", "GNU/Linux");
-	target: Supported_OS := external("OS", "GNU/Linux");
+
+	type Supported_OS is ("Windows_NT", "GNU/Linux", "Darwin" );
+
+
+	-- the default is GNU/Linux
+	target : Supported_OS := external( "OS", "GNU/Linux" );
 
 
 
@@ -15,6 +19,9 @@ project KOW_Framework_Setup is
 
 		when "GNU/Linux" =>
 			for Library_Kind use "dynamic";
+
+		when "Darwin" =>
+			for Library_Kind use "static";
 	end case;
 
 end KOW_Framework_Setup;
