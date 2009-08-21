@@ -17,9 +17,10 @@
 = 1. Introduction =
 ===================
 
-This is the implementation of Adaworks, a framework for building business applications with 
-the Ada2005 programming language.
+This is the base package for the KOW Framework.
 
+
+This document is highly outdated.
 
 
 ===================

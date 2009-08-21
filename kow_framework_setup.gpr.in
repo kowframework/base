@@ -1,6 +1,8 @@
 
-project KOW_Framework_Setup is
 
+project KOW_Framework_Setup is
+	
+	version := $version;
 
 	type Supported_OS is ("Windows_NT", "GNU/Linux", "Darwin" );
 
