@@ -37,6 +37,7 @@ do
 	cd "$PKG_ROOT"
 	rm -rf "$PKG_VERSION/.git"
 	tar zcf "$PKG_VERSION.tar.gz" "$PKG_VERSION"
+	md5sum "$PKG_VERSION.tar.gz" > "$PKG_VERSION.tar.gz.md5"
 	rm -rf "$PKG_VERSION"
 
 
