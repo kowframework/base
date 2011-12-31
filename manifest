@@ -1,21 +1,15 @@
-Inside this folder you find the files that are part of the Ada Works framework.
-
-author: Marcelo Coraça de Freitas
+This folder contains the generic build system for the entire KOW framework project.
 
 
-awconfig	=> configuration files handling library.
-awent		=> persistence/odb abstraction framework.
-awlib		=> general library. Mostly String handling and SO Specific tasks
-awlog		=> logging capatbilities for Ada
-awplug		=> plugin loading/unloading
+All reused code for building code (*sic*) is inside this repository - which should be distribuited
+with every release we make. :)
 
-apq		=> database bindings (a database neutral package)
-apq-mysql	=> MySQL support for APQ
-apq-postgresql	=> PostgreSQL support for APQ
-apq-freetds	=> Generic FreeTDS support for APQ
-apq-sybase	=> Sybase support for APQ (FreeTDS powered)
-apq-mssql	=> Microsoft SQL Server support for APQ (FreeTDS powered)
+The KOW Framework is composed by:
 
 
-extra		=> some random files we have nowhere else to put
+APQ (and submodules) :: Database Bindings for several vendors with a unified API.
 
+KOW_Lib	:: generic stuff we use all the time (except on APQ) we had no other place to put;.
+KOW_Config :: manages configuration files for your application in an easy way
+KOW_Ent :: Tagged Types => Database mapping in Ada
+KOW_View :: the Web Framework in the KOW Framework, based on AWS.
