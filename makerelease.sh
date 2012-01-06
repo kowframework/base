@@ -30,6 +30,7 @@ do
 	
 	echo -n Working on $PKG_VERSION ...
 
+	make clean -C "$pkg" > /dev/null
 
 	mkdir -p "$PKG_ROOT"
 	cp -r "$pkg" "$PKG_DIR"
