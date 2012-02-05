@@ -1,8 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 
 
-VERSION=$1
 
 PKGLIST=pkglist
 
@@ -18,7 +17,6 @@ fi
 
 for pkg in `cat $PKGLIST`
 do
-	CURR=$PWD
 	PACKAGE=`basename $pkg`
 	VERSION=`cat "$pkg/version"`
 	PKG_VERSION=$PACKAGE-$VERSION
@@ -35,14 +33,14 @@ do
 	mkdir -p "$PKG_ROOT"
 	cp -r "$pkg" "$PKG_DIR"
 
-	cd "$PKG_ROOT"
+	pushd "$PKG_ROOT"
 	rm -rf "$PKG_VERSION/.git"
 	tar zcf "$PKG_VERSION.tar.gz" "$PKG_VERSION"
-	md5sum "$PKG_VERSION.tar.gz" > "$PKG_VERSION.tar.gz.md5"
+	md5 "$PKG_VERSION.tar.gz" > "$PKG_VERSION.tar.gz.md5"
 	rm -rf "$PKG_VERSION"
+	popd
 
 
-	cd "$CURR"
 
 	echo DONE
 done
