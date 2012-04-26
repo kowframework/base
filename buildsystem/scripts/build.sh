@@ -13,7 +13,6 @@ source scripts/buildutil.sh
 load_configuration 
 
 
-echo $KOWLIB_EXTERNALLY_BUILT
 
 
 if [[ "$project_type" = "library" ]]
