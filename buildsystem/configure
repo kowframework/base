@@ -12,6 +12,8 @@ source scripts/buildutil.sh
 ###################
 
 
+project_type="library";
+
 enable_debug="false";
 enable_static="true";
 enable_relocatable="true";
